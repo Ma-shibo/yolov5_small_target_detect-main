@@ -1,0 +1,87 @@
+# YOLOv5 🚀 小目标检测保守增强超参数配置
+# 适用于数据量有限或对精度要求极高的场景
+
+# 学习率相关参数 (保守设置)
+lr0: 0.005  # 较低的初始学习率
+lrf: 0.1    # 较低的最终学习率比例
+momentum: 0.9   # 适中的动量
+weight_decay: 0.0005  # 适中的正则化
+warmup_epochs: 3.0    # 较短的预热
+warmup_momentum: 0.8
+warmup_bias_lr: 0.08
+
+# 损失函数权重 (保守优化)
+box: 0.06   # 适度增加边界框损失权重
+cls: 0.35   # 适度增加分类损失权重
+cls_pw: 1.0
+obj: 1.0    # 标准目标性损失
+obj_pw: 1.0
+iou_t: 0.2  # 适中的IoU阈值
+anchor_t: 3.5  # 适中的锚框阈值
+fl_gamma: 0.0  # 不使用焦点损失
+
+# 数据增强控制参数 (保守增强)
+augment_ratio: 0.25  # 25%样本应用增强
+augment_schedule: 'fixed'  # 固定调度
+
+# HSV颜色空间增强 (保守设置)
+hsv_h: 0.015
+hsv_s: 0.6
+hsv_v: 0.4
+
+# 几何变换增强 (保守设置)
+degrees: 15.0
+translate: 0.15
+scale: 0.8
+shear: 10.0
+perspective: 0.0003
+
+# 翻转增强
+flipud: 0.05  # 较低的垂直翻转概率
+fliplr: 0.5
+
+# 高级数据增强 (保守设置)
+mosaic: 0.8
+mixup: 0.1   # 较低的混合概率
+copy_paste: 0.05  # 较低的复制粘贴概率
+
+# 标签平滑
+label_smoothing: 0.02  # 轻微的标签平滑
+
+# 小目标特定优化参数 (保守设置)
+small_object_weight: 1.5
+min_object_size: 10
+focal_loss_alpha: 0.25
+focal_loss_gamma: 1.0
+
+# 多尺度训练参数 (保守设置)
+multiscale_range: [0.6, 1.4]
+multiscale_probability: 0.6
+
+# NMS参数优化 (保守设置)
+nms_iou_threshold: 0.5
+confidence_threshold: 0.3
+
+# 训练策略参数
+early_stopping_patience: 100
+save_best_only: True
+gradient_clip_norm: 8.0
+ema_decay: 0.9999
+
+# 验证参数
+val_iou_threshold: 0.5
+val_conf_threshold: 0.01
+val_nms_threshold: 0.6
+
+description: |
+  保守的小目标检测超参数配置
+  
+  适用于:
+  - 数据量有限的场景
+  - 对精度要求极高的应用
+  - 初始尝试小目标检测
+  
+  特点:
+  - 较少的数据增强避免过拟合
+  - 保守的学习率策略
+  - 更高的置信度阈值确保精度

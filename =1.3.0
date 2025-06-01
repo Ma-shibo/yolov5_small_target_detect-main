@@ -1,0 +1,37 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting albumentations
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/c5/2f/468208ac3345b59286f5a73dd6e298c111c8a6a5896f658d221cd55ebf8d/albumentations-1.4.18-py3-none-any.whl (224 kB)
+Requirement already satisfied: numpy>=1.24.4 in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from albumentations) (1.24.4)
+Requirement already satisfied: scipy>=1.10.0 in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from albumentations) (1.10.1)
+Collecting scikit-image>=0.21.0 (from albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/33/29/1d696450464d6e13358d3ef185a1fb14a11181c5dab1eb2837c02be86373/scikit_image-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.9/13.9 MB 40.8 MB/s eta 0:00:00
+Requirement already satisfied: PyYAML in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from albumentations) (6.0.2)
+Collecting pydantic>=2.7.0 (from albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/f4/3c/8cc1cc84deffa6e25d2d0c688ebb80635dfdbf1dbea3e30c541c8cf4d860/pydantic-2.10.6-py3-none-any.whl (431 kB)
+Collecting albucore==0.0.17 (from albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/f7/20/9f56b72131ea71c9566f0cc303a9e92156767845164c0f4ec10534630991/albucore-0.0.17-py3-none-any.whl (10 kB)
+Collecting eval-type-backport (from albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/ce/31/55cd413eaccd39125368be33c46de24a1f639f2e12349b0361b4678f3915/eval_type_backport-0.2.2-py3-none-any.whl (5.8 kB)
+Collecting opencv-python-headless>=4.9.0.80 (from albumentations)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/dd/5c/c139a7876099916879609372bfa513b7f1257f7f1a908b0bdc1c2328241b/opencv_python_headless-4.11.0.86-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (50.0 MB)
+Requirement already satisfied: typing-extensions>=4.9.0 in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from albumentations) (4.13.2)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.7.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Collecting pydantic-core==2.27.2 (from pydantic>=2.7.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/f7/a3/5f19bc495793546825ab160e530330c2afcee2281c02b5ffafd0b32ac05e/pydantic_core-2.27.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 42.0 MB/s eta 0:00:00
+Requirement already satisfied: networkx>=2.8 in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from scikit-image>=0.21.0->albumentations) (3.1)
+Requirement already satisfied: pillow>=9.0.1 in /home/msb/pan1/conda_envs/yolov5_small_target/lib/python3.8/site-packages (from scikit-image>=0.21.0->albumentations) (10.4.0)
+Collecting imageio>=2.27 (from scikit-image>=0.21.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/1e/b7/02adac4e42a691008b5cfb31db98c190e1fc348d1521b9be4429f9454ed1/imageio-2.35.1-py3-none-any.whl (315 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image>=0.21.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/06/a3/68d17088a4f09565bc7341fd20490da8191ec4cddde479daaabbe07bb603/tifffile-2023.7.10-py3-none-any.whl (220 kB)
+Collecting PyWavelets>=1.1.1 (from scikit-image>=0.21.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/88/4b/b2b2a6f51e47c091c221bfde976a01a7e5f20e7e5e6341b2b9c4db73d2ed/PyWavelets-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 38.3 MB/s eta 0:00:00
+Requirement already satisfied: packaging>=21 in /home/msb/.local/lib/python3.8/site-packages (from scikit-image>=0.21.0->albumentations) (24.2)
+Collecting lazy_loader>=0.2 (from scikit-image>=0.21.0->albumentations)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/83/60/d497a310bde3f01cb805196ac61b7ad6dc5dcf8dce66634dc34364b20b4f/lazy_loader-0.4-py3-none-any.whl (12 kB)
+Installing collected packages: tifffile, PyWavelets, pydantic-core, opencv-python-headless, lazy_loader, imageio, eval-type-backport, annotated-types, scikit-image, pydantic, albucore, albumentations
+Successfully installed PyWavelets-1.4.1 albucore-0.0.17 albumentations-1.4.18 annotated-types-0.7.0 eval-type-backport-0.2.2 imageio-2.35.1 lazy_loader-0.4 opencv-python-headless-4.11.0.86 pydantic-2.10.6 pydantic-core-2.27.2 scikit-image-0.21.0 tifffile-2023.7.10

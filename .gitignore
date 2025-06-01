@@ -1,0 +1,76 @@
+# Repo-specific GitIgnore ----------------------------------------------------------------------------------------------
+
+# 排除所有的Python编译文件和缓存
+*.py[cod]
+__pycache__/
+# 排除所有的日志文件
+*.log
+# 排除所有的临时文件
+*.tmp
+# 排除所有的虚拟环境文件夹
+venv/
+# 排除所有的IDE和编辑器配置文件
+.idea/
+# 排除所有的操作系统生成的文件
+.DS_Store
+# 排除所有的测试和覆盖率报告
+*.coverage
+# 排除所有的文档生成文件
+*.html
+# 排除所有的打包和分发文件
+*.egg
+# 排除所有的缓存文件
+*.cache
+# 排除所有的编译文件
+*.so
+# 排除所有的Jupyter Notebook检查点
+.ipynb_checkpoints/
+
+# 排除运行时生成的文件和文件夹
+runs/
+# 排除所有的运行时生成的文件和文件夹
+runs/**
+
+# 包含指定的文件夹
+!classify/
+!classify/**
+
+!.github/
+!.github/**
+
+!data/
+!data/**
+
+!models/
+!models/**
+
+!segment/
+!segment/**
+
+!utils/
+!utils/**
+
+!weights/
+!weights/**
+
+# 包含small_target_detection文件夹，但排除scripts/runs
+!small_target_detection/
+!small_target_detection/**
+small_target_detection/scripts/runs/
+small_target_detection/scripts/runs/**
+
+# 包含指定的文件
+!.dockerignore
+!.gitattributes
+!.gitignore
+!benchmarks.py
+!CONTRIBUTING.md
+!detect.py
+!export.py
+!hubconf.py
+!LICENSE
+!README.md
+!requirements.txt
+!train.py
+!tutorial.ipynb
+!val.py

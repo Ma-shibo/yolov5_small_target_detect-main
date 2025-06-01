@@ -1,0 +1,137 @@
+# YOLOv5 🚀 小目标检测专用超参数配置
+# 针对田径跑道标记等小目标检测任务优化
+# 使用方法: python small_target_train.py --hyp data/hyps/hyp.small-target.yaml
+
+# 学习率相关参数
+lr0: 0.008  # 初始学习率 (SGD=1E-2, Adam=1E-3) - 小目标适中调整
+lrf: 0.15  # 最终学习率比例 (lr0 * lrf) - 提高最终学习率保持细节学习
+momentum: 0.937  # SGD动量/Adam beta1
+weight_decay: 0.0008  # 优化器权重衰减 - 适度增加防止过拟合
+warmup_epochs: 5.0  # 预热轮次 - 增加预热帮助小目标学习
+warmup_momentum: 0.8  # 预热初始动量
+warmup_bias_lr: 0.1  # 预热初始偏置学习率
+
+# 损失函数权重 (针对小目标优化)
+box: 0.08  # 边界框损失增益 - 增加边界框损失权重
+cls: 0.4  # 分类损失增益 - 增加分类损失权重  
+cls_pw: 1.0  # 分类BCE损失正权重
+obj: 1.2  # 目标性损失增益 - 增强目标检测能力
+obj_pw: 1.0  # 目标性BCE损失正权重
+iou_t: 0.18  # IoU训练阈值 - 降低阈值有利于小目标
+anchor_t: 3.0  # 锚框倍数阈值 - 降低阈值增加小目标匹配
+fl_gamma: 0.0  # 焦点损失gamma (efficientDet默认gamma=1.5)
+
+# 数据增强控制参数
+augment_ratio: 0.35  # 数据增强样本比例 - 适度增强避免掩盖原始数据
+                     # 含义: 每个epoch中35%的样本会应用数据增强变换
+                     # 65%的样本保持原始状态，确保模型学习真实数据分布
+augment_schedule: 'progressive'  # 增强调度策略: 'fixed', 'progressive', 'adaptive'
+
+# HSV颜色空间增强 (针对跑道场景优化)
+hsv_h: 0.02  # 图像HSV色调增强 (比例) - 增加色调变化
+hsv_s: 0.8   # 图像HSV饱和度增强 (比例) - 模拟不同天气
+hsv_v: 0.5   # 图像HSV亮度增强 (比例) - 模拟不同光照
+
+# 几何变换增强 (小目标友好)
+degrees: 25.0     # 图像旋转角度 (+/- deg) - 增加旋转范围
+translate: 0.2    # 图像平移 (+/- 比例) - 增加平移范围
+scale: 0.95       # 图像缩放 (+/- 增益) - 大范围缩放训练
+shear: 15.0       # 图像剪切 (+/- deg) - 增加剪切变换
+perspective: 0.0005  # 图像透视变换 (+/- 比例), 范围 0-0.001
+
+# 翻转增强
+flipud: 0.1   # 图像上下翻转 (概率) - 启用垂直翻转
+fliplr: 0.5   # 图像左右翻转 (概率) - 保持水平翻转
+
+# 高级数据增强
+mosaic: 1.0      # 马赛克增强 (概率) - 保持马赛克增强
+mixup: 0.2       # 图像混合增强 (概率) - 增加混合概率
+copy_paste: 0.1  # 分割复制粘贴 (概率) - 启用复制粘贴
+
+# 标签平滑和其他
+label_smoothing: 0.05  # 标签平滑 epsilon - 轻微平滑防止过拟合
+
+# 小目标特定优化参数
+small_object_weight: 2.0     # 小目标权重倍数
+min_object_size: 8           # 最小目标尺寸(像素)
+focal_loss_alpha: 0.25       # 焦点损失alpha参数
+focal_loss_gamma: 1.5        # 焦点损失gamma参数
+
+# 多尺度训练参数
+multiscale_range: [0.4, 1.6]  # 多尺度训练范围
+multiscale_probability: 0.8   # 多尺度训练概率
+
+# NMS参数优化
+nms_iou_threshold: 0.45      # NMS IoU阈值
+confidence_threshold: 0.25   # 置信度阈值 - 降低阈值捕获更多小目标
+
+# 特征金字塔网络优化
+fpn_channels: 256            # FPN通道数
+fpn_depth: 3                 # FPN深度
+
+# 锚框设置 (针对小目标优化)
+small_anchors:
+  - [6, 8]     # 超小锚框
+  - [10, 12]   # 小锚框
+  - [14, 18]   # 小锚框
+  - [18, 24]   # 中小锚框
+  - [24, 32]   # 中小锚框  
+  - [32, 42]   # 中等锚框
+  - [48, 64]   # 中等锚框
+  - [64, 86]   # 中大锚框
+  - [96, 128]  # 大锚框
+
+# 训练策略参数
+early_stopping_patience: 150  # 早停耐心度 - 增加耐心度
+save_best_only: True          # 仅保存最佳模型
+
+# 稳定性参数（添加）
+gradient_clip_norm: 10.0      # 梯度裁剪范数
+gradient_clip_value: 0.1      # 逐元素梯度裁剪
+bn_eps: 1e-5                  # 批归一化epsilon值
+bn_momentum: 0.1              # 批归一化动量
+max_grad_value: 0.1           # 逐元素梯度最大值
+grad_accumulation: 1          # 梯度累积步数
+nan_detection_patience: 10    # NaN检测耐心度
+log_gradient_enabled: true    # 启用对数梯度抑制
+log_gradient_threshold: 1.0   # 标准阈值
+log_gradient_alpha: 1.0       # 标准强度系数
+
+# 验证参数
+val_iou_threshold: 0.5        # 验证IoU阈值
+val_conf_threshold: 0.001     # 验证置信度阈值 - 低阈值评估小目标
+val_nms_threshold: 0.6        # 验证NMS阈值
+
+# 日志和可视化
+plot_training_curves: True    # 绘制训练曲线
+plot_detection_examples: True # 绘制检测示例
+log_frequency: 50             # 日志记录频率
+
+# 备注信息
+description: |
+  小目标检测专用超参数配置文件
+  
+  数据增强说明:
+  - augment_ratio控制每个epoch中应用增强的样本比例
+  - 数据总量不变，只是部分样本内容发生变换
+  - 动态随机选择，避免固定模式记忆
+  - 保持原始数据占主导地位，增强数据作为补充
+  
+  主要优化策略:
+  1. 降低IoU和anchor阈值，有利于小目标匹配
+  2. 增加边界框和分类损失权重
+  3. 扩大几何变换范围，增强数据多样性
+  4. 控制数据增强比例，避免掩盖原始数据
+  5. 针对小目标优化锚框尺寸
+  6. 采用渐进式增强策略
+  
+  适用场景:
+  - 田径跑道标记检测
+  - 小物体目标检测
+  - 密集小目标场景
+  
+  使用建议:
+  - 训练初期可适当降低augment_ratio
+  - 根据具体数据集调整hsv参数
+  - 监控验证指标调整学习率
+  - augment_ratio建议范围: 0.2-0.5，过高可能掩盖原始数据分布

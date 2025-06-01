@@ -1,0 +1,67 @@
+lr0: 0.00005  # 更极低的初始学习率
+lrf: 0.001   # 更平缓的学习率衰减
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 20.0  # 进一步延长预热期（从15.0增加到20.0）
+warmup_momentum: 0.8
+warmup_bias_lr: 0.005  # 更保守的偏置学习率
+box: 0.05
+cls: 0.3
+cls_pw: 1.0
+obj: 0.35  # 微调目标检测损失权重
+obj_pw: 1.0
+iou_t: 0.2
+anchor_t: 4.0
+fl_gamma: 0.0
+augment_ratio: 0.2
+augment_schedule: fixed
+hsv_h: 0.01
+hsv_s: 0.4
+hsv_v: 0.3
+degrees: 10.0
+translate: 0.1
+scale: 0.5
+shear: 5.0
+perspective: 0.0001
+flipud: 0.0
+fliplr: 0.5
+mosaic: 0.8
+mixup: 0.1
+copy_paste: 0.0
+label_smoothing: 0.05
+small_object_weight: 1.2
+min_object_size: 8
+focal_loss_alpha: 0.25
+focal_loss_gamma: 1.0
+multiscale_range:
+- 0.8
+- 1.2
+multiscale_probability: 0.3
+nms_iou_threshold: 0.6
+confidence_threshold: 0.25
+early_stopping_patience: 30
+save_best_only: true
+# 梯度处理参数
+gradient_clip_norm: 0.2  # 更严格的梯度裁剪
+gradient_clip_value: 0.1 # 保持逐元素梯度裁剪值
+log_gradient_enabled: true  # 启用对数梯度抑制
+log_gradient_threshold: 1.0  # 对数梯度抑制阈值
+log_gradient_alpha: 1.0  # 对数抑制强度系数
+
+# 梯度局部非极大值抑制 (LNMS) 参数
+lnms_enabled: true  # 启用梯度局部非极大值抑制
+lnms_local_threshold: 3.0  # 局部极大值判定阈值
+lnms_global_threshold: 10.0  # 全局最大允许梯度值
+lnms_window_size: 3  # 局部窗口大小
+lnms_reduction: "mean"  # 峰值处理方式，'mean'或'median'
+
+ema_decay: 0.9999
+val_iou_threshold: 0.6
+val_conf_threshold: 0.001
+val_nms_threshold: 0.6
+bn_eps: 1e-5
+bn_momentum: 0.03  # 降低BN动量以提高稳定性
+max_grad_value: 0.1  # 逐元素梯度最大值
+grad_accumulation: 1  # 梯度累积步数
+nan_detection_patience: 5  # NaN检测耐心度
+description: "超高稳定配置，针对梯度爆炸和NaN问题\n\n主要改进:\n- 极低学习率\n- 更严格梯度裁剪\n- 加长预热阶段到20轮\n- 保守的BN参数设置\n- 增强的梯度监控和NaN处理机制"

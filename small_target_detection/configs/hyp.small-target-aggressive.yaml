@@ -1,0 +1,87 @@
+# YOLOv5 🚀 小目标检测激进增强超参数配置
+# 适用于数据量充足但小目标难以检测的场景
+
+# 学习率相关参数 (激进设置)
+lr0: 0.012  # 更高的初始学习率
+lrf: 0.2    # 更高的最终学习率比例
+momentum: 0.95  # 更高的动量
+weight_decay: 0.001  # 更强的正则化
+warmup_epochs: 8.0   # 更长的预热
+warmup_momentum: 0.9
+warmup_bias_lr: 0.15
+
+# 损失函数权重 (激进优化小目标)
+box: 0.12   # 大幅增加边界框损失权重
+cls: 0.6    # 大幅增加分类损失权重
+cls_pw: 1.5 # 增加分类正权重
+obj: 1.5    # 大幅增强目标性损失
+obj_pw: 1.2 # 增加目标性正权重
+iou_t: 0.15 # 进一步降低IoU阈值
+anchor_t: 2.5  # 进一步降低锚框阈值
+fl_gamma: 2.0  # 启用焦点损失
+
+# 数据增强控制参数 (激进增强)
+augment_ratio: 0.5  # 50%样本应用增强
+augment_schedule: 'adaptive'  # 自适应调度
+
+# HSV颜色空间增强 (激进设置)
+hsv_h: 0.03
+hsv_s: 0.9
+hsv_v: 0.6
+
+# 几何变换增强 (激进设置)
+degrees: 35.0
+translate: 0.25
+scale: 0.98
+shear: 20.0
+perspective: 0.001
+
+# 翻转增强
+flipud: 0.15  # 增加垂直翻转概率
+fliplr: 0.5
+
+# 高级数据增强 (激进设置)
+mosaic: 1.0
+mixup: 0.3   # 增加混合概率
+copy_paste: 0.2  # 增加复制粘贴概率
+
+# 标签平滑
+label_smoothing: 0.1  # 更强的标签平滑
+
+# 小目标特定优化参数 (激进设置)
+small_object_weight: 3.0
+min_object_size: 6
+focal_loss_alpha: 0.3
+focal_loss_gamma: 2.0
+
+# 多尺度训练参数 (激进设置)
+multiscale_range: [0.3, 1.8]
+multiscale_probability: 0.9
+
+# NMS参数优化 (激进设置)
+nms_iou_threshold: 0.4
+confidence_threshold: 0.2
+
+# 训练策略参数
+early_stopping_patience: 200
+save_best_only: True
+gradient_clip_norm: 15.0
+ema_decay: 0.9998
+
+# 验证参数
+val_iou_threshold: 0.45
+val_conf_threshold: 0.0005
+val_nms_threshold: 0.65
+
+description: |
+  激进的小目标检测超参数配置
+  
+  适用于:
+  - 极小目标检测任务
+  - 数据量充足的场景
+  - 需要极高召回率的应用
+  
+  注意事项:
+  - 可能导致更多假阳性
+  - 训练时间会更长
+  - 需要更仔细的超参数调优

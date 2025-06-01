@@ -1,0 +1,66 @@
+# YOLOv5 🚀 依赖包清单
+# 使用方法: pip install -r requirements.txt
+
+# 基础依赖包 ------------------------------------------------------------------
+gitpython>=3.1.0             # Git仓库操作库，用于版本控制和代码管理
+ipython>=7.0.0               # 增强的Python交互式解释器，支持Jupyter notebook
+matplotlib>=3.3.0            # 绘图库，用于生成训练曲线、损失图表等可视化内容
+numpy>=1.21.0,<1.25.0        # 数值计算库，提供多维数组操作和数学函数
+opencv-python>=4.6.0         # 计算机视觉库，用于图像处理、读取、变换等操作
+Pillow>=9.0.0                # Python图像处理库，支持多种图像格式的读写
+psutil>=5.8.0                # 系统资源监控库，获取CPU、内存、GPU使用情况
+PyYAML>=6.0                  # YAML文件解析库，读取配置文件和超参数文件
+requests>=2.28.0             # HTTP请求库，用于下载模型权重和数据集
+scipy>=1.7.0                 # 科学计算库，提供优化算法和统计函数
+thop>=0.1.1                  # 深度学习模型复杂度分析，计算FLOPs（浮点运算次数）
+torch>=1.13.0,<2.1.0         # PyTorch深度学习框架，核心计算引擎
+torchvision>=0.14.0,<0.16.0  # PyTorch视觉库，提供预训练模型和图像变换
+tqdm>=4.65.0                 # 进度条库，显示训练和推理进度
+# protobuf>=3.20.1           # 协议缓冲区库，用于数据序列化（可选）
+
+# 日志记录 --------------------------------------------------------------------
+tensorboard>=2.10.0          # TensorBoard可视化工具，监控训练过程和指标变化
+# clearml>=1.2.0             # 机器学习实验管理平台（可选）
+# comet                       # Comet.ml实验跟踪平台（可选）
+
+# 数据可视化 ------------------------------------------------------------------
+pandas>=1.5.0                # 数据分析库，处理训练结果统计和数据表格
+seaborn>=0.12.0              # 统计数据可视化库，美化图表显示效果
+
+# 模型导出 --------------------------------------------------------------------
+# coremltools>=6.0           # CoreML模型导出，用于iOS设备部署
+# onnx>=1.12.0               # ONNX模型格式导出，跨平台模型交换标准
+# onnx-simplifier>=0.4.1     # ONNX模型简化工具，优化模型结构
+# nvidia-pyindex             # NVIDIA Python包索引，TensorRT导出前置依赖（已移除，使用--extra-index-url）
+# nvidia-tensorrt             # NVIDIA TensorRT推理优化引擎（需要手动安装）
+# scikit-learn>=1.1.2        # 机器学习库，用于CoreML量化
+# tensorflow>=2.4.1          # TensorFlow框架，支持TF模型导出
+# tensorflowjs>=3.9.0        # TensorFlow.js导出，用于Web端部署
+# openvino-dev               # Intel OpenVINO工具套件，边缘设备推理优化
+
+# 服务部署 --------------------------------------------------------------------
+# tritonclient[all]~=2.24.0  # NVIDIA Triton推理服务器客户端
+
+# 扩展功能 --------------------------------------------------------------------
+# mss                        # 屏幕截图库，用于实时桌面检测
+# pycocotools>=2.0           # COCO数据集评估工具，计算mAP指标
+# roboflow                   # Roboflow数据集管理平台集成
+# ultralytics                # Ultralytics HUB云平台集成
+
+# 小目标检测专用依赖 -----------------------------------------------------------
+#albumentations>=1.3.0        # 高性能图像增强库，支持目标检测边界框变换，提供100+种增强方法
+# imgaug>=0.4.0              # 图像增强库，提供丰富的增强操作和可视化功能（可选）
+# tensorflow>=2.8.0          # TensorFlow数据API，用于高效数据流水线处理（可选）
+
+# 注意事项 --------------------------------------------------------------------
+# TensorRT安装说明：
+# nvidia-pyindex和nvidia-tensorrt包已移除，因为它们可能导致依赖冲突
+# 推荐TensorRT安装方法：
+# 1. 下载NVIDIA官方TensorRT包
+# 2. 或使用conda: conda install -c nvidia tensorrt
+# 3. 或使用pip with extra index: pip install tensorrt --extra-index-url https://pypi.ngc.nvidia.com
+#
+# PyTorch版本兼容性说明：
+# - torch 1.13-2.0.x 与 torchvision 0.14-0.15.x 兼容
+# - numpy版本限制<1.25.0以避免与某些包的兼容性问题
+# - 如果您不需要TensorRT优化，可以忽略此依赖

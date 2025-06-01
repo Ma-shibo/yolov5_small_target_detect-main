@@ -1,0 +1,12 @@
+# YOLOv5 数据集配置文件
+# 训练和验证数据路径 (相对于此文件的路径)
+path: /home/lkx/Documents/1/2025_CUADC_Front_Camera  # 数据集根目录
+train: train/images  # 训练图片路径 (相对于path)
+val: val/images      # 验证图片路径 (相对于path)
+test: test/images    # 测试图片路径 (相对于path)
+
+# 类别数量
+nc: 1  # 类别数量
+
+# 类别名称
+names: ['target']  # 统一的目标类别

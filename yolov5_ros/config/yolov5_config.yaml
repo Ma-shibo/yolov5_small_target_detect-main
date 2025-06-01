@@ -1,0 +1,49 @@
+# YOLOv5 ROS Package Configuration
+
+# Detection parameters
+detection:
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  max_detections: 1000
+  image_size: 640
+  use_half_precision: false
+  use_tensorrt: false
+  agnostic_nms: false
+  
+  # Class filtering (empty means all classes)
+  classes: []
+
+# Model parameters
+model:
+  weights_path: "yolov5s.pt"
+  device: ""  # auto-select
+
+# Camera parameters
+camera:
+  width: 1920
+  height: 1080
+  fps: 30
+  sensor_id: 0
+  frame_id: "camera_link"
+
+# Topics
+topics:
+  input_image: "/camera/image_raw"
+  camera_info: "/camera/camera_info"
+  detections: "/yolov5/detections"
+  detection_image: "/yolov5/detection_image"
+
+# Visualization
+visualization:
+  enable: true
+  publish_image: true
+  line_thickness: 2
+  
+# Performance optimization for TX2/NX
+tx2_optimization:
+  enable: false
+  reduced_resolution: true
+  target_width: 1280
+  target_height: 720
+  reduced_image_size: 416
+  confidence_threshold: 0.4
